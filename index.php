@@ -1,24 +1,23 @@
 <?php
-// inisialisasi session
 session_start();
 
-// mengecek apakah ada session user yang aktif, jika tidak arahkan ke login.php
-if(!isset($_SESSION['user'])) {
-    header('location:login.php'); // arahkan ke login.php
+if (!isset($_SESSION['pengguna'])) {
+    header("Location: login.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Belajar Membuat Halaman Login</title>
+    <meta charset="UTF-8">
+    <title>Sistem Manajemen Waktu dan Tugas Siswa</title>
 </head>
 <body style="text-align:center">
     <h1>Halaman Administrator</h1>
-    <a href="index.php">Home</a>
+    <a href="index.php">Home</a> |
     <a href="logout.php">Logout</a>
     <hr>
-    <h3>Selamat datang, nama user</h3>
-    halaman ini akan tampil setelah user login.
-
+    <h3>Selamat datang, <?= htmlspecialchars($_SESSION['pengguna']['nama']) ?></h3>
+    <p>Halaman ini hanya tampil setelah user login.</p>
 </body>
 </html>
